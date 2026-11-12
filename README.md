@@ -44,7 +44,7 @@ python examples.py daily-prices --csv out.csv
 | Latest news about a stock | [`stock-news`](#stock-news) | `GET /stock-news` |
 | Company press releases | [`press-releases`](#press-releases) | `GET /press-release` |
 | Earnings dates, splits and dividends of a stock | [`earnings-dates`](#earnings-dates) | `GET /earnings-split-calendar` |
-| IPO details of a company | [`ipo-calendar`](#ipo-calendar) | `GET /ipo-calendar` |
+| Recent and upcoming IPOs | [`ipo-calendar`](#ipo-calendar) | `GET /ipo-calendar` |
 | Options chain: calls and puts with strikes, prices and Greeks | [`options-chain`](#options-chain) | `GET /options-callsputs` |
 | Short interest of a stock over time, with days to cover | [`short-interest`](#short-interest) | `GET /short-interest` |
 | Most shorted stocks over $1 billion market cap | [`most-shorted`](#most-shorted) | `GET /short-interest/ranking` |
@@ -202,15 +202,17 @@ curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/earnings-split-
 ```
 
 <a id="ipo-calendar"></a>
-### IPO details of a company
+### Recent and upcoming IPOs
 
 ```python
-dp.ipo_calendar(symbol="ABNB")
+dp.ipo_calendar()
 ```
 
 ```bash
-curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/ipo-calendar?symbol=ABNB"
+curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/ipo-calendar"
 ```
+
+Newest first.
 
 ## Options, short interest and insiders
 

@@ -23,7 +23,7 @@ EXAMPLES = {
     'index-prices': ('Daily prices of the S&P 500 index', 'stock_price_1d', {'ticker': '^GSPC'}, 'price_history'),
     'crypto-prices': ('Daily Bitcoin prices', 'stock_price_1d', {'ticker': 'BTC-USD'}, 'price_history'),
     'intraday': ('5-minute prices for day trading', 'stock_price_5m', {'ticker': 'SPY'}, None),
-    'commodities': ('Gold futures, daily', 'commodity_price_1d', {'symbol': 'GC=F'}, None),
+    'commodities': ('Gold futures, daily', 'commodity_price_1d', {'symbol': 'GC=F'}, 'price_history'),
     'forex': ('US dollar to euro, daily', 'fx', {'currency_conversion': 'USD-EUR', 'one_day_interval': '1d'}, None),
     'top-gainers': ('Top gainers', 'gain_loss', {'status': 'gainer'}, None),
     'sector-performance': ('Sector performance on Nasdaq', 'sector_performance', {'exchange': 'NASDAQ'}, None),
@@ -31,7 +31,7 @@ EXAMPLES = {
     'stock-news': ('Latest news about a stock', 'stock_news', {'ticker': 'NVDA'}, None),
     'press-releases': ('Company press releases', 'press_release', {'symbol': 'NVDA'}, None),
     'earnings-dates': ('Earnings dates, splits and dividends of a stock', 'earnings_split_calendar', {'symbol': 'MSFT'}, None),
-    'ipo-calendar': ('IPO details of a company', 'ipo_calendar', {'symbol': 'ABNB'}, None),
+    'ipo-calendar': ('Recent and upcoming IPOs', 'ipo_calendar', {}, None),
     'options-chain': ('Options chain: calls and puts with strikes, prices and Greeks', 'options_callsputs', {'symbol': 'AAPL'}, None),
     'short-interest': ('Short interest of a stock over time, with days to cover', 'short_interest', {'symbol': 'GME', 'date_from': '2025-01-01'}, None),
     'most-shorted': ('Most shorted stocks over $1 billion market cap', 'short_interest_ranking', {'min_market_cap': 1000000000, 'sort': 'short_pct', 'order': 'desc', 'limit': 25}, None),
@@ -48,7 +48,7 @@ def rows(answer, key=None):
         frame = to_frame(answer, key=key)
     except (KeyError, TypeError):
         return None
-    return frame if len(frame.columns) > 1 or len(frame) > 1 else None
+    return frame if len(frame) > 1 else None  # one record reads better as JSON
 
 
 def main(argv: list[str] | None = None) -> int:
