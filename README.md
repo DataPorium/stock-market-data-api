@@ -44,7 +44,7 @@ python examples.py daily-prices --csv out.csv
 | Latest news about a stock | [`stock-news`](#stock-news) | `GET /stock-news` |
 | Company press releases | [`press-releases`](#press-releases) | `GET /press-release` |
 | Earnings dates, splits and dividends of a stock | [`earnings-dates`](#earnings-dates) | `GET /earnings-split-calendar` |
-| Recent and upcoming IPOs | [`ipo-calendar`](#ipo-calendar) | `GET /ipo-calendar` |
+| IPO calendar entry of one company | [`ipo-calendar`](#ipo-calendar) | `GET /ipo-calendar` |
 | Options chain: calls and puts with strikes, prices and Greeks | [`options-chain`](#options-chain) | `GET /options-callsputs` |
 | Short interest of a stock over time, with days to cover | [`short-interest`](#short-interest) | `GET /short-interest` |
 | Most shorted stocks over $1 billion market cap | [`most-shorted`](#most-shorted) | `GET /short-interest/ranking` |
@@ -202,17 +202,17 @@ curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/earnings-split-
 ```
 
 <a id="ipo-calendar"></a>
-### Recent and upcoming IPOs
+### IPO calendar entry of one company
 
 ```python
-dp.ipo_calendar()
+dp.ipo_calendar(symbol="WMT")
 ```
 
 ```bash
-curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/ipo-calendar"
+curl -H "apikey: $DATAPORIUM_API_KEY" "https://api.dataporium.io/ipo-calendar?symbol=WMT"
 ```
 
-Newest first.
+Without a symbol, the answer lists the recent and upcoming IPOs, newest first.
 
 ## Options, short interest and insiders
 

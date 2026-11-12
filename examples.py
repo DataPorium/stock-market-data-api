@@ -31,7 +31,7 @@ EXAMPLES = {
     'stock-news': ('Latest news about a stock', 'stock_news', {'ticker': 'NVDA'}, None),
     'press-releases': ('Company press releases', 'press_release', {'symbol': 'NVDA'}, None),
     'earnings-dates': ('Earnings dates, splits and dividends of a stock', 'earnings_split_calendar', {'symbol': 'MSFT'}, None),
-    'ipo-calendar': ('Recent and upcoming IPOs', 'ipo_calendar', {}, None),
+    'ipo-calendar': ('IPO calendar entry of one company', 'ipo_calendar', {'symbol': 'WMT'}, None),
     'options-chain': ('Options chain: calls and puts with strikes, prices and Greeks', 'options_callsputs', {'symbol': 'AAPL'}, None),
     'short-interest': ('Short interest of a stock over time, with days to cover', 'short_interest', {'symbol': 'GME', 'date_from': '2025-01-01'}, None),
     'most-shorted': ('Most shorted stocks over $1 billion market cap', 'short_interest_ranking', {'min_market_cap': 1000000000, 'sort': 'short_pct', 'order': 'desc', 'limit': 25}, None),
